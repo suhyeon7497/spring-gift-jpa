@@ -3,9 +3,12 @@ package gift.repository;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-import gift.model.Member;
-import gift.model.Product;
-import gift.model.Wish;
+import gift.member.model.Member;
+import gift.member.MemberRepository;
+import gift.product.model.Product;
+import gift.wish.Wish;
+import gift.product.ProductRepository;
+import gift.wish.WishRepository;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

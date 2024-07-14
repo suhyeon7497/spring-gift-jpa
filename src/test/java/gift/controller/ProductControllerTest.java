@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import gift.model.dto.MemberRequestDto;
-import gift.model.dto.ProductRequestDto;
+import gift.member.model.MemberRequestDto;
+import gift.product.model.ProductRequestDto;
 import java.net.URI;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
