@@ -34,7 +34,8 @@ public class WishService {
         String criteria) {
         Pageable pageable = PageRequest.of(pageNo, PAGE_SIZE, Sort.by(Direction.ASC, criteria));
         Page<WishResponseDto> page = wishRepository.findAllByMemberId(loginMemberDto.getId(),
-            pageable).map(WishResponseDto::from);
+                pageable)
+            .map(WishResponseDto::from);
         return page.getContent();
     }
 
