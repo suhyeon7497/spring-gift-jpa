@@ -19,8 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class WishService {
 
-    private static final int PAGE_SIZE = 10;
-
     private final WishRepository wishRepository;
     private final ProductRepository productRepository;
 
@@ -31,8 +29,9 @@ public class WishService {
 
     @Transactional(readOnly = true)
     public List<WishResponseDto> getWishList(LoginMemberDto loginMemberDto, int pageNo,
+        int pageSize,
         String criteria) {
-        Pageable pageable = PageRequest.of(pageNo, PAGE_SIZE, Sort.by(Direction.ASC, criteria));
+        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(Direction.ASC, criteria));
         Page<WishResponseDto> page = wishRepository.findAllByMemberId(loginMemberDto.getId(),
                 pageable)
             .map(WishResponseDto::from);

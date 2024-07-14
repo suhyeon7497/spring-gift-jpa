@@ -30,8 +30,10 @@ public class AdminController {
     @GetMapping
     public String getAllProducts(Model model,
         @RequestParam(required = false, defaultValue = "0", value = "pageNo") int pageNo,
+        @RequestParam(required = false, defaultValue = "10", value = "pageSize") int pageSize,
         @RequestParam(required = false, defaultValue = "product", value = "criteria") String criteria) {
-        Page<ProductResponseDto> productList = productService.getAllProducts(pageNo, criteria);
+        Page<ProductResponseDto> productList = productService.getAllProducts(pageNo, pageSize,
+            criteria);
         model.addAttribute("productList", productList);
         return "products";
     }

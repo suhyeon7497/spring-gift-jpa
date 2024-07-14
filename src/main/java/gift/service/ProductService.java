@@ -16,8 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ProductService {
 
-    private static final int PAGE_SIZE = 10;
-
     private final ProductRepository productRepository;
 
     public ProductService(ProductRepository productRepository) {
@@ -25,8 +23,8 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
-    public Page<ProductResponseDto> getAllProducts(int pageNo, String criteria) {
-        Pageable pageable = PageRequest.of(pageNo, PAGE_SIZE, Sort.by(Direction.ASC, criteria));
+    public Page<ProductResponseDto> getAllProducts(int pageNo, int pageSize, String criteria) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(Direction.ASC, criteria));
 
         return productRepository.findAll(pageable)
             .map(ProductResponseDto::from);

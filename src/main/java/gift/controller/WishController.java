@@ -28,8 +28,9 @@ public class WishController {
     @GetMapping
     public List<WishResponseDto> getWishList(@LoginMember LoginMemberDto loginMemberDto,
         @RequestParam(required = false, defaultValue = "0", value = "pageNo") int pageNo,
+        @RequestParam(required = false, defaultValue = "10", value = "pageSize") int pageSize,
         @RequestParam(required = false, defaultValue = "product", value = "criteria") String criteria) {
-        return wishService.getWishList(loginMemberDto, pageNo, criteria);
+        return wishService.getWishList(loginMemberDto, pageNo, pageSize, criteria);
     }
 
     @PostMapping
